@@ -27,7 +27,10 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '127.0.0.1',
-    'localhost'
+    'localhost',
+    '*',
+    'https://*',
+    'http://*'
 ]
 
 INSTALLED_APPS = [
@@ -37,12 +40,29 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
+    'api',
+    'django_extensions'
 ]
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ORIGIN_ALLOW_ALL = DEBUG
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
